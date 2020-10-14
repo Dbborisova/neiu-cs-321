@@ -26,3 +26,13 @@
             width: 100%;
             text-align: center;
         }
+        .text{
+            font-size: 25px;
+            font-family: "Kristen ITC";
+            text-align: center;
+        }
+
+        .formText{
+            margin-right: 3em;
+
+        }

@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet", th:href="@{/formstyle.css}"/>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>CookWithMe</title>
@@ -28,10 +28,10 @@
 </head>
 <body>
 <h1>Cook Withe Me</h1>
-<div class="mx-auto" style="width: 100px">
-<img th:src="@{images/cwm.jpg}"/>
+<div id="pic">
+<img th:src="@{/images/cwm.jpg}"/>
 </div>
-
+<p class="text">Thank you for your submission!</p>
 
 <div class="footer">
     <p>Copyright @2020 Desislava Borisova CS-321-1</p>
