@@ -4,7 +4,6 @@ import cwm.AForm;
 import cwm.data.AFormRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
@@ -26,13 +25,13 @@ public class AFormController {
     @GetMapping("/current")
 
     public String recipeForm(){
-        return "authorForm";
+        return "author_form";
     }
 
     @PostMapping
     public String processForm(@Valid @ModelAttribute("aForm") AForm aForm, Errors errors, SessionStatus sessionStatus){
         if(errors.hasErrors())
-            return "authorForm";
+            return "author_form";
 
         aFormRepo.save(aForm);
 
