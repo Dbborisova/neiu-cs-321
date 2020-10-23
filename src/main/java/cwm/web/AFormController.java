@@ -23,7 +23,6 @@ public class AFormController {
     }
 
     @GetMapping("/current")
-
     public String recipeForm(){
         return "author_form";
     }

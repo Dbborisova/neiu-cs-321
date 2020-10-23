@@ -3,6 +3,7 @@ package cwm;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,10 +17,11 @@ import java.util.Collection;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED, force=true)
+@NoArgsConstructor(access=AccessLevel.PROTECTED,force = true)
+@RequiredArgsConstructor
 public class User implements UserDetails {
 
-    private static final long serialVersionVID=1l;
+    private static final long serialVersionVID=1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +30,10 @@ public class User implements UserDetails {
     private final String username;
     private final String password;
     private final String fullName;
-    private final String phoneNumber;
+    private final String phone;
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));

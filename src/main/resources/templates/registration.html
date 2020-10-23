@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:method="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/formstyle.css}"/>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Register</h1>
+<div class="mb-3" id="pic">
+<img th:src="@{images/cwm.jpg}"/>
+</div>
+
+<form method="post" th:action="@{/register}" th:object="${registrationForm}">
+    <lable for="username">Username</lable>
+    <input type="text" th:name="username" th:value="*{username}" id="username"/>
+    <span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span><br/>
+
+    <lable for="password">Password</lable>
+    <input type="text" th:name="password" th:value="*{password}" id="password"/>
+    <span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span><br/>
+
+    <lable for="fullName">Full Name</lable>
+    <input type="text" th:name="fullName" th:value="*{fullName}" id="fullName"/>
+    <span class="validationError" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</span><br/>
+
+    <lable for="phone">Phone Number</lable>
+    <input type="text" th:name="phone" th:value="*{phone}" id="phone"/>
+    <span class="validationError" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Number Error</span><br/>
+
+    <input type="submit" value="Register"/><br/>
+
+</form>
+
+</body>
+</html>
