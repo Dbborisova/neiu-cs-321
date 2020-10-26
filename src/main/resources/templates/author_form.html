@@ -25,8 +25,8 @@
         </span>
     </div>
 
-    <label>Name:</label>
-    <input type="text" th:field="*{name}"/><br><br>
+    <label for="name">Name:</label>
+    <input type="text" th:field="name" th:value="${fullName}" id="name"/><br><br>
     <span class="validationError"
           th:if="${#fields.hasErrors('name')}"
           th:errors="*{name}">Name Error</span>

@@ -3,6 +3,7 @@ package cwm.security;
 import cwm.data.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -43,7 +44,12 @@ public class RegistrationController {
         if (errors.hasErrors())
             return "/registration";
 
-        userRepo.save(registrationForm.toUser(passwordEncoder));
+        try {
+            userRepo.save(registrationForm.toUser(passwordEncoder));
+        }catch(DataIntegrityViolationException e){
+            errors.rejectValue("username", "invalidUsername", "Username not available. Please choose another username");
+        return "/registration";
+        }
         return "redirect:/login";
     }
 

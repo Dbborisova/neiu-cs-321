@@ -41,6 +41,9 @@ public class AForm implements Serializable {
     @ManyToMany(targetEntity = CB.class)
     private List<CB> cbs=new ArrayList<>();
 
+    @ManyToOne
+    private User user;
+
     public void addDesign(CB design){ this.cbs.add(design);}
 
     @PrePersist

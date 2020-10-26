@@ -26,7 +26,7 @@ public class RegistrationForm {
     private String fullName;
 
     @NotNull
-    @Pattern(regexp = "[0-9]-[0-9]{3}-[0-9]{4}",message = "Phone number format:XXX-XXX-XXX")
+    @Pattern(regexp = "[0-9]{3}-[0-9]{3}-[0-9]{4}",message = "Phone number format:XXX-XXX-XXXX")
     private String phone;
 
     public User toUser(PasswordEncoder passwordEncoder){
