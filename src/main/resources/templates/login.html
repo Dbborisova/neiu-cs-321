@@ -10,24 +10,36 @@
 <title>Login</title>
 </head>
 <body>
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
 <h1>Log in</h1>
-<div class="mb-3" id="pic">
+    </div>
+<div class="row justify-content-center mt-2 mb-3">
     <img th:src="@{images/cwm.jpg}"/>
 </div>
-<div th:if="${error}">
+    <div class="row justify-content-center mb-3">
+<div th:if="${param.errors}">
     Unable to login. Check your username and password.
 </div>
-<p>
-    Name here? Click <a th:href="@{register}">to register</a>
+
+        <p> Click <a th:href="@{register}">to register</a></p>
+    </div>
+    <div class="row justify-content-center mb-2">
     <form method="post" th:action="@{/login}">
     <lable for="username">Username:</lable>
     <input type="text" th:name="username" id="username"><br/><br/>
 
     <lable for="password">Password:</lable>
     <input type="text" th:name="password" id="password"><br/><br/>
-    <input type="submit" value="login">
+        <div class="row justify-content-center">
+    <input  type="submit" value="login">
+        </div>
 </form>
-</p>
 
+    </div>
+</div>
+<div class="footer">
+    <p>Copyright @2020 Desislava Borisova CS-321-1</p>
+</div>
 </body>
 </html>

@@ -1,15 +1,18 @@
+
 package cwm.web;
 
-import cwm.Category;
-import cwm.data.AFormRepository;
-import cwm.data.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+//import cwm.Category;
+//import cwm.data.AFormRepository;
+import cwm.Recipe;
+import cwm.data.RecipeRepository;
+//import cwm.data.CategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("display")
@@ -17,29 +20,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class TableController {
 
 
-    @Autowired
-    private CategoryRepository repo;
+    private final RecipeRepository repo;
+
+    public TableController(RecipeRepository repo) {
+        this.repo = repo;
+    }
 
 
     @GetMapping
-    public String displayTable()
-    {
+    public String displayTable() {
         return "display";
     }
 
     @ModelAttribute
-    public void addAttributes(Model model)
-    {
-        model.addAttribute("categories", repo.findAll());
+    public void addAttributes(Model model) {
+        List<Recipe> recipes = (List<Recipe>) repo.findAll();
+        model.addAttribute("recipe", recipes);
 
     }
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
