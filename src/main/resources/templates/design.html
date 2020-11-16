@@ -70,7 +70,7 @@
                   th:if="${#fields.hasErrors('ingredients')}"
                   th:errors="*{ingredients}">Error</span>
             <br/><br/>
-            <p>Description:<textarea rows="5" cols="40" name="ds" th:field="*{ds}">Type recipe</textarea>
+            <p>Description:<textarea rows="5" cols="100" name="ds" th:field="*{ds}">Type recipe</textarea>
             </p>
             <span class="validationError"
                   th:if="${#fields.hasErrors('ds')}"

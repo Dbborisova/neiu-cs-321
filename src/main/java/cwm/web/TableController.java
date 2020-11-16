@@ -6,6 +6,10 @@ package cwm.web;
 import cwm.Recipe;
 import cwm.data.RecipeRepository;
 //import cwm.data.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,21 +24,31 @@ import java.util.List;
 public class TableController {
 
 
-    private final RecipeRepository repo;
+    private RecipeRepository repo;
 
-    public TableController(RecipeRepository repo) {
-        this.repo = repo;
+    private RecipeProperties props;
+    @Autowired
+    public TableController(RecipeRepository repo, RecipeProperties props)
+    {
+        this.repo=repo;
+        this.props=props;
+
     }
 
 
     @GetMapping
-    public String displayTable() {
+    public String displayTable()
+    {
+
+
         return "display";
     }
 
+
     @ModelAttribute
     public void addAttributes(Model model) {
-        List<Recipe> recipes = (List<Recipe>) repo.findAll();
+        Pageable pageable= PageRequest.of(0, props.getPageSize());
+        List<Recipe> recipes = repo.findAll(pageable);
         model.addAttribute("recipe", recipes);
 
     }

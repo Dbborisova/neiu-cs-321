@@ -1,0 +1,30 @@
+#logging.file.name=logs/app.log
+#logging.pattern.file=%d %p %c{1.} {%t} %m%n
+
+
+---
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+      url: jdbc:h2:file:~/Desktop/neiu-cs-321/cook-with-me-master/dbdata
+      username: admin
+      password:
+      driver: org.h2.Driver
+
+
+  recipe:
+    book:
+      page-size: 20
+
+
+
+
+
+
