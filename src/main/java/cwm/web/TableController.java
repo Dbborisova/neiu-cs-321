@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,14 +40,12 @@ public class TableController {
     @GetMapping
     public String displayTable()
     {
-
-
         return "display";
     }
 
 
     @ModelAttribute
-    public void addAttributes(Model model) {
+    public void addAttributes( Model model) {
         Pageable pageable= PageRequest.of(0, props.getPageSize());
         List<Recipe> recipes = repo.findAll(pageable);
         model.addAttribute("recipe", recipes);

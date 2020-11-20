@@ -3,113 +3,146 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" th:href="@{/formstyle.css}"/>
+
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/style.css}"/>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 shrink-to-fit=no">
 
     <title>CookWithMe</title>
 </head>
 
 <body>
-<div class="container-fluid justify-content-center">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-brand">CWM</span>
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/' ? 'active' : ''}">
 
-    <div class="row justify-content-center">
-        <h1>Cook With Me</h1>
-    </div>
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/login' ? 'active' : ''}"
+                        th:if="${#authentication.getName().equals('anonymousUser')}" >
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/register' ? 'active' : ''}"
+                        th:if="${#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/register}">Register</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/design' ? 'active' : ''}"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/design}">Recipe</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/display' ? 'active' : ''}"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/display}">Content</a>
+                    </li>
+                    <li class="nav-item"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
 
-    <div class="row justify-content-center">
-        <img th:src="@{images/cwm.jpg}"/>
-    </div>
-
-
-<form method="post" th:action="@{/design}" th:object="${design}" >
-
-     <div class="row justify-content-center mb-2 mt-3">
-       <div>
-         <input type="radio" id="app" name="appetizer" value="Appetizer" th:field="*{categories}">
-         <lable for="app">Appetizer</lable>
+            </div>
+        </nav>
+  <div class="container-fluid justify-content-center">
+       <div class="row justify-content-center">
+            <h1><span th:text="${fullName}">NAME</span></h1>
        </div>
-    <div>
-        <input type="radio" id="sp" name="soup" value="Soup" th:field="*{categories}">
-        <lable for="soup">Soup</lable>
-    </div>
-    <div>
-        <input type="radio" id="br" name="bread" value="Bread" th:field="*{categories}">
-        <lable for="Bread">Bread</lable>
-    </div>
-    <div>
-        <input type="radio" id="sl" name="salad" value="Salad" th:field="*{categories}">
-        <lable for="salad">Salad</lable>
-    </div>
-    <div>
-        <input type="radio" id="maind" name="maindish" value="Main-Dish" th:field="*{categories}">
-        <lable for="maindish">Main Dish</lable>
-    </div>
-    <div>
-        <input type="radio" id="des" name="dessert" value="Dessert" th:field="*{categories}">
-        <lable for="dessert">Dessert</lable>
-        <span class="validationError"
-              th:if="${#fields.hasErrors('categories')}"
-              th:errors="*{categories}">Error</span>
-        <br/><br/>
-    </div>
-    </div>
+       <div class="row justify-content-center">
+            <img th:src="@{images/cwm.jpg}"/>
+       </div>
+  </div>
 
-    <div class="row justify-content-center ">
-        <div class="col-lg-4">
-            <p>Name: <input name="ds" type="text" th:field="*{name}"/></p>
+    <form method="post" th:action="@{/design}" th:object="${design}" class="container-fluid">
+         <div class="row justify-content-center mb-2 mt-3">
+           <div>
+             <input type="radio" id="app" name="appetizer" value="Appetizer" th:field="*{categories}">
+             <lable class="mr-3 font-weight-bold" for="app">Appetizer</lable>
+           </div>
+        <div>
+            <input type="radio" id="sp" name="soup" value="Soup" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="soup">Soup</lable>
+        </div>
+        <div>
+            <input type="radio" id="br" name="bread" value="Bread" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="Bread">Bread</lable>
+        </div>
+        <div>
+            <input type="radio" id="sl" name="salad" value="Salad" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="salad">Salad</lable>
+        </div>
+        <div>
+            <input type="radio" id="maind" name="maindish" value="Main-Dish" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="maindish">Main Dish</lable>
+        </div>
+        <div>
+            <input type="radio" id="des" name="dessert" value="Dessert" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="dessert">Dessert</lable>
             <span class="validationError"
-                  th:if="${#fields.hasErrors('name')}"
-                  th:errors="*{name}">Error</span>
-            <br/><br/>
-            <p>Ingredients:<textarea rows="5" cols="40" name="ds" th:field="*{ingredients}">Type recipe</textarea>
-            </p>
-            <span class="validationError"
-                  th:if="${#fields.hasErrors('ingredients')}"
-                  th:errors="*{ingredients}">Error</span>
-            <br/><br/>
-            <p>Description:<textarea rows="5" cols="100" name="ds" th:field="*{ds}">Type recipe</textarea>
-            </p>
-            <span class="validationError"
-                  th:if="${#fields.hasErrors('ds')}"
-                  th:errors="*{ds}">Error</span>
+                  th:if="${#fields.hasErrors('categories')}"
+                  th:errors="*{categories}">Error</span>
             <br/><br/>
         </div>
-    </div>
-    <div class="row justify-content-center" id="main_dishes">
-        <div class="col-lg-4">
-                <p>Total Time: <input name="time" type="text" th:field="*{time}"/></p>
-            <span class="validationError"
-                  th:if="${#fields.hasErrors('time')}"
-                  th:errors="*{time}">Error</span>
-            <br/><br/>
         </div>
-    </div>
 
-    <div class="row justify-content-center" id="dessert">
-        <div class="col-lg-4">
-            <p>Calories: <input name="cal" type="text" th:field="*{cal}"/></p>
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <p class="font-weight-bold">Name: <input class="input-group-prepend form-control" name="ds" type="text" th:field="*{name}"/></p>
                 <span class="validationError"
-                      th:if="${#fields.hasErrors('cal')}"
-                      th:errors="*{cal}">Error</span>
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}">Error</span>
                 <br/><br/>
+                <p class="font-weight-bold">Ingredients:<textarea class="input-group-prepend form-control" rows="5" cols="50" name="ds" th:field="*{ingredients}">Type recipe</textarea></p>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ingredients')}"
+                      th:errors="*{ingredients}">Error</span>
+                <br/><br/>
+                <p class="font-weight-bold">Description:<textarea class="input-group-prepend form-control" rows="5" cols="50" name="ds" th:field="*{ds}">Type recipe</textarea>
+                </p>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('ds')}"
+                      th:errors="*{ds}">Error</span>
+                <br/><br/>
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <button class="btn-default">Submit</button>
-    </div>
-
-</form>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Logout"/>
+        <div class="row justify-content-center" id="main_dishes">
+            <div class="col-lg-4">
+                    <p class="font-weight-bold">Total Time: <input class="input-group-prepend form-control" name="time" type="text" th:field="*{time}"/></p>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('time')}"
+                      th:errors="*{time}">Error</span>
+                <br/><br/>
+            </div>
+        </div>
+        <div class="row justify-content-center" id="dessert">
+            <div class="col-lg-4">
+                <p class="font-weight-bold">Calories: <input class="input-group-prepend form-control" name="cal" type="text" th:field="*{cal}"/></p>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('cal')}"
+                          th:errors="*{cal}">Error</span>
+                    <br/><br/>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button class="btn btn-light mb-3">Submit</button>
+        </div>
     </form>
 
-</div>
-<div class="footer">
-    <p>Copyright @2020 Desislava Borisova CS-321-1</p>
-</div>
+    <footer class="footer mt-5">
+    <div class="container text-center">
+        <span>Copyright @2020 Desislava Borisova CS-321-1</span>
+    </div>
+    </footer>
 
 <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
 <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>

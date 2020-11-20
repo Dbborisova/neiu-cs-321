@@ -3,43 +3,92 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" xmlns:method="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/formstyle.css}"/>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-<title>Login</title>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/form.css}"/>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1 shrink-to-fit=no">
+        <title>Login</title>
 </head>
 <body>
-<div class="container-fluid mt-5">
-    <div class="row justify-content-center">
-<h1>Log in</h1>
-    </div>
-<div class="row justify-content-center mt-2 mb-3">
-    <img th:src="@{images/cwm.jpg}"/>
-</div>
-    <div class="row justify-content-center mb-3">
-<div th:if="${param.errors}">
-    Unable to login. Check your username and password.
-</div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-brand">CWM</span>
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/' ? 'active' : ''}">
 
-        <p> Click <a th:href="@{register}">to register</a></p>
-    </div>
-    <div class="row justify-content-center mb-2">
-    <form method="post" th:action="@{/login}">
-    <lable for="username">Username:</lable>
-    <input type="text" th:name="username" id="username"><br/><br/>
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/login' ? 'active' : ''}"
+                        th:if="${#authentication.getName().equals('anonymousUser')}" >
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/register' ? 'active' : ''}"
+                        th:if="${#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/register}">Register</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/design' ? 'active' : ''}"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/design}">Recipe</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/display' ? 'active' : ''}"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/display}">Content</a>
+                    </li>
+                    <li class="nav-item"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <lable for="password">Password:</lable>
-    <input type="text" th:name="password" id="password"><br/><br/>
+
+    <div class="container-fluid">
         <div class="row justify-content-center">
-    <input  type="submit" value="login">
+            <div class="col-3 text-center mt-2 mb-3">
+                <img th:src="@{images/cwm.jpg}"/>
+            </div>
         </div>
-</form>
-
     </div>
-</div>
-<div class="footer">
-    <p>Copyright @2020 Desislava Borisova CS-321-1</p>
-</div>
+        <form method="post" th:action="@{/login}" class="container-fluid">
+            <div class="row form-group justify-content-center">
+                <div class="justify-content-center mb-3">
+                    <div th:if="${param.errors}">
+                        Unable to login. Check your username and password.
+                    </div>
+                </div>
+<!--                <label class="col-form-label col-1 text-right font-weight-bold" for="username">Username</label>-->
+                <p class="font-weight-bold">Username <input class="input-group-prepend form-control" type="text" th:name="username" id="username"></p>
+            </div>
+            <div class="row from-group justify-content-center">
+<!--                <lable class="col-form-label col-1 text-right font-weight-bold" for="password">Password</lable>-->
+                <p class="font-weight-bold">Password<input class="input-group-prepend form-control" type="password" th:name="password" id="password"></p>
+            </div>
+
+            <div class="row justify-content-center mt-3">
+                <input class="btn btn-light ml-3" type="submit" value="login">
+            </div>
+    </form>
+
+
+    <footer class="footer mt-lg-5">
+        <div class="container text-center" >
+            <span>Copyright @2020 Desislava Borisova CS-321-1</span>
+        </div>
+    </footer>
+
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
+<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>
+<script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"> </script>
 </body>
 </html>

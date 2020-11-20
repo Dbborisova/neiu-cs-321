@@ -10,4 +10,5 @@ public interface RecipeRepository extends CrudRepository<Recipe,Long> {
 
 
     List<Recipe> findAll(Pageable pageable);
+
 }

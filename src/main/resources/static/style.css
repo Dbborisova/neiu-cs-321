@@ -1,38 +1,26 @@
 body {
-        font-family: "Kristen ITC";
-        background-color: lightgray;
+        font-family: ".SF NS Text";
+        background-color: darkgray;
     }
 
-    h1 {
-        font-family: "Kristen ITC";
-        color: seagreen;
-        text-align: center;
-    }
+
 
     img {
-
         width: 20em;
         height: auto;
     }
 
-    #pic {
-        text-align: center;
-    }
-    .footer{
+
+    /*.footer{
         font-family: Arial;
         position: fixed;
         left:0;
         bottom: 0;
         width: 100%;
         text-align: center;
-    }
-.mt-4{
-    margin-top:.5em
-}
+    }*/
+
     span.validationError {
         color: #ff0000;
     }
 
-    form{
-        margin-bottom: 4em;
-    }

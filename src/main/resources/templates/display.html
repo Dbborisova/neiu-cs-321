@@ -3,39 +3,98 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet", th:href="@{/formstyle.css}"/>
+
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
 
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1 shrink-to-fit=no">
     <title>CookWithMe</title>
 </head>
 
 
 <body>
-<h1>Cook With Me</h1>
-<div id="pic">
-    <img th:src="@{/images/cwm.jpg}"/>
-</div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-brand">CWM</span>
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/' ? 'active' : ''}">
 
-<div th:each="recipes : ${recipe}">
-  <!--  <div th:each="category : ${categories}">-->
-<div th:action="@{/display}" th:object="${recipe}" >
-    <div>
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/login' ? 'active' : ''}"
+                        th:if="${#authentication.getName().equals('anonymousUser')}" >
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/register' ? 'active' : ''}"
+                        th:if="${#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/register}">Register</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/design' ? 'active' : ''}"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/design}">Recipe</a>
+                    </li>
+                    <li class="nav-item" th:classappend="${#request.getServletPath()== '/display' ? 'active' : ''}"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/display}">Content</a>
+                    </li>
+                    <li class="nav-item"
+                        th:if="${!#authentication.getName().equals('anonymousUser')}">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
 
-      <!-- <p>Id: <span th:text="${category.id}">Cost</span></p>-->
-        <p><span th:text="${recipes.categories}">END DATE</span></p><br/>
-        <p>Name: <span th:text="${recipes.name}">START DATE</span></p>
-        <p>Ingredients:<span th:text="${recipes.ingredients}">END DATE</span></p><br/>
-        <p>Description: <span th:text="${recipes.ds}">END DATE</span></p><br/>
-        <p>Total Time: <span th:text="${recipes.time}">END DATE</span></p><br/>
-        <p>Calories: <span th:text="${recipes.cal}">END DATE</span></p><br/>
-    </div>
-</div>
-</div>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout"/>
-</form>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+        <div class="text-center mt-5 mb-5" id="pic">
+            <img th:src="@{/images/cwm.jpg}"/>
+        </div>
+        </div>
+<!--<div class="list-group text-center">-->
+<!--    <ul>-->
+<!--        <button type="button" class="btn btn-link font-weight-bold">Appetizer</button>-->
+<!--        <button type="button" class="btn btn-link font-weight-bold">Soup</button>-->
+<!--        <button type="button" class="btn btn-link  font-weight-bold">Bread</button>-->
+<!--        <button type="button" class="btn btn-link font-weight-bold">Salad</button>-->
+<!--        <button type="button" class="btn btn-link font-weight-bold">Main Dish</button>-->
+<!--        <button type="button" class="btn btn-link  font-weight-bold">Dessert</button>-->
+<!--    </ul>-->
+<!--</div>-->
+        <div class="container-fluid justify-content-center bg-secondary">
+        <div th:each="recipes : ${recipe}">
+        <div th:action="@{/display}" th:object="${recipe}" >
+
+
+        <div class="row">
+            <div class="col-1 mt-5"> <span class="font-weight-bold" th:text="${recipes.categories}"></span></div>
+            <div class="col-1"> <p >Name </p><span th:text="${recipes.name}"></span></div>
+            <div class="col-3" > <p>Ingredients</p> <span th:text="${recipes.ingredients}"></span></div>
+            <div class="col-5" > <p>Description </p><span th:text="${recipes.ds}"></span></div>
+            <div class="col-1" > <p>Total Time</p> <span th:text="${recipes.time}"></span></div>
+            <div class="col-1" > <p>Calories </p><span th:text="${recipes.cal}"></span></div>
+        </div>
+            <div class="row mt-3 "><div class="col-12"><p></p></div>  </div>
+
+        </div>
+        </div>
+        </div>
+
+        <footer class="footer mt-5">
+            <div class="container text-center">
+                <span>Copyright @2020 Desislava Borisova CS-321-1</span>
+            </div>
+        </footer>
 
 <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
 <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>

@@ -7,11 +7,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 @Data
 @Entity
-public class Recipe {
+public class Recipe implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -24,10 +25,11 @@ public class Recipe {
 
     @NotNull(message="Description is required")
     @Size(min=5, message="Description must be at least 5 characters long")
+    @Column( length=100000 )
     private String ds;
 
     @NotNull(message = "Time is required")
-    private Double time;
+    private String time;
 
     @NotNull(message = "Calories is required")
     private Long cal;
