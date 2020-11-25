@@ -11,16 +11,40 @@ body {
     }
 
 
-    /*.footer{
+    .footerForm{
         font-family: Arial;
         position: fixed;
         left:0;
         bottom: 0;
         width: 100%;
         text-align: center;
-    }*/
+    }
+
 
     span.validationError {
         color: #ff0000;
+    }
+
+    #app{
+        background-color: lightsteelblue;
+    }
+    #soup
+    {
+        background-color: lightsteelblue;
+    }
+    #bread
+    {
+        background-color: lightsteelblue;
+    }
+    #salad
+    {
+        background-color: lightsteelblue;
+    }
+    #maindish{
+        background-color: lightsteelblue;
+    }
+    #dessert
+    {
+        background-color:lightsteelblue;
     }
 

@@ -60,37 +60,37 @@
         <div class="text-center mt-5 mb-5" id="pic">
             <img th:src="@{/images/cwm.jpg}"/>
         </div>
-        </div>
-<!--<div class="list-group text-center">-->
-<!--    <ul>-->
-<!--        <button type="button" class="btn btn-link font-weight-bold">Appetizer</button>-->
-<!--        <button type="button" class="btn btn-link font-weight-bold">Soup</button>-->
-<!--        <button type="button" class="btn btn-link  font-weight-bold">Bread</button>-->
-<!--        <button type="button" class="btn btn-link font-weight-bold">Salad</button>-->
-<!--        <button type="button" class="btn btn-link font-weight-bold">Main Dish</button>-->
-<!--        <button type="button" class="btn btn-link  font-weight-bold">Dessert</button>-->
-<!--    </ul>-->
-<!--</div>-->
-        <div class="container-fluid justify-content-center bg-secondary">
-        <div th:each="recipes : ${recipe}">
-        <div th:action="@{/display}" th:object="${recipe}" >
-
-
-        <div class="row">
-            <div class="col-1 mt-5"> <span class="font-weight-bold" th:text="${recipes.categories}"></span></div>
-            <div class="col-1"> <p >Name </p><span th:text="${recipes.name}"></span></div>
-            <div class="col-3" > <p>Ingredients</p> <span th:text="${recipes.ingredients}"></span></div>
-            <div class="col-5" > <p>Description </p><span th:text="${recipes.ds}"></span></div>
-            <div class="col-1" > <p>Total Time</p> <span th:text="${recipes.time}"></span></div>
-            <div class="col-1" > <p>Calories </p><span th:text="${recipes.cal}"></span></div>
-        </div>
-            <div class="row mt-3 "><div class="col-12"><p></p></div>  </div>
-
-        </div>
+            <div class="text-center mb-3">
+            <h3 class="text-center"><span th:text="${fullName}"></span> recipes</h3>
         </div>
         </div>
 
-        <footer class="footer mt-5">
+        <div class="container-fluid">
+            <div class="list-group text-center">
+
+
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="appetizer">Appetizer</a></li>
+                    <li class="mb-2"><a href="soup">Soup</a></li>
+                    <li class="mb-2"><a href="bread">Bread</a></li>
+                    <li class="mb-2"><a href="salad">Salad</a></li>
+                    <li class="mb-2"><a href="maindish">Main Dish</a></li>
+                    <li class="mb-2"><a href="dessert">Dessert</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <footer class="footerForm mt-5">
             <div class="container text-center">
                 <span>Copyright @2020 Desislava Borisova CS-321-1</span>
             </div>
