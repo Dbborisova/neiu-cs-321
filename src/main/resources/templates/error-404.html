@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/base :: headContent"></head>
+
+<body>
+    <nav th:replace="fragments/base :: navigation" ></nav>
+
+    <div  class="container-fluid mt-5">
+        <div th:replace="fragments/base :: appImage"></div>
+    </div>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h2>Sorry! We couldn't find that page.</h2>
+        </div>
+    </div>
+
+    <footer th:replace="fragments/base :: footer"></footer>
+
+    <div th:insert="fragments/base :: scripts"></div>
+</body>
+</html>
