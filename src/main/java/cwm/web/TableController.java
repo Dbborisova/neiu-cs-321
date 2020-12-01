@@ -24,14 +24,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping("/content")
 
 public class TableController {
 
-    private UserRepository user;
-    private RecipeRepository repo;
+    private final UserRepository user;
+    private final RecipeRepository repo;
 
-    private RecipeProperties props;
+    private final RecipeProperties props;
     @Autowired
     public TableController(RecipeRepository repo, RecipeProperties props, UserRepository user)
     {
@@ -112,16 +112,6 @@ public class TableController {
     }
 
 
-
-
-//    @ModelAttribute
-//    public void addAttributes( Model model, @AuthenticationPrincipal User user) {
-//        addUserInfoToModel(model,user);
-//        Pageable pageable= PageRequest.of(0, props.getPageSize());
-//        List<Recipe> recipes = repo.findAll(pageable);
-//        model.addAttribute("recipe", recipes);
-//
-//    }
 
     private void addUserInfoToModel(Model model, User user){
         model.addAttribute("fullName",user.getFullName());

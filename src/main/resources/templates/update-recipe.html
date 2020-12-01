@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/basesecond :: head"></head>
+
+<body>
+<nav th:replace="fragments/basesecond :: navigation" ></nav>
+
+<div  class="container-fluid mt-5">
+    <div th:replace="fragments/base :: appImage"></div>
+</div>
+<form method="post" th:action="@{/modify/update/{recipeId}(recipeId=${recipe.id})}" th:object="${recipe}" class="container-fluid">
+    <div class="row justify-content-center mb-2 mt-3">
+        <div>
+            <input type="radio" id="app" name="appetizer" value="Appetizer" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="app">Appetizer</lable>
+        </div>
+        <div>
+            <input type="radio" id="sp" name="soup" value="Soup" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="soup">Soup</lable>
+        </div>
+        <div>
+            <input type="radio" id="br" name="bread" value="Bread" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="Bread">Bread</lable>
+        </div>
+        <div>
+            <input type="radio" id="sl" name="salad" value="Salad" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="salad">Salad</lable>
+        </div>
+        <div>
+            <input type="radio" id="maind" name="maindish" value="Main-Dish" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="maindish">Main Dish</lable>
+        </div>
+        <div>
+            <input type="radio" id="des" name="dessert" value="Dessert" th:field="*{categories}">
+            <lable class="mr-3 font-weight-bold" for="dessert">Dessert</lable>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('categories')}"
+                  th:errors="*{categories}">Error</span>
+            <br/><br/>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <p class="font-weight-bold">Name: <input class="input-group-prepend form-control" name="ds" type="text" th:field="*{name}"/></p>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}">Error</span>
+            <br/><br/>
+            <p class="font-weight-bold">Ingredients:<textarea class="input-group-prepend form-control" rows="5" cols="50" name="ds" th:field="*{ingredients}">Type recipe</textarea></p>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ingredients')}"
+                  th:errors="*{ingredients}">Error</span>
+            <br/><br/>
+            <p class="font-weight-bold">Description:<textarea class="input-group-prepend form-control" rows="5" cols="50" name="ds" th:field="*{ds}">Type recipe</textarea>
+            </p>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ds')}"
+                  th:errors="*{ds}">Error</span>
+            <br/><br/>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" id="main_dishes">
+        <div class="col-lg-4">
+            <p class="font-weight-bold">Total Time: <input class="input-group-prepend form-control" name="time" type="text" th:field="*{time}"/></p>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('time')}"
+                  th:errors="*{time}">Error</span>
+            <br/><br/>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <p class="font-weight-bold">Calories: <input class="input-group-prepend form-control" name="cal" type="text" th:field="*{cal}"/></p>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('cal')}"
+                  th:errors="*{cal}">Error</span>
+            <br/><br/>
+        </div>
+    </div>
+
+    <div class="row form-group justify-content-center">
+        <a th:href="@{/content/display}" class="btn btn-outline-dark col-auto form-group mr-2">Cancel</a>
+        <input class="btn btn-outline-dark col-auto mb-3" type="submit" value="Update"/>
+    </div>
+</form>
+<footer th:replace="fragments/base :: footer"></footer>
+
+<div th:insert="fragments/base :: scripts"></div>
+
+</body>
+</html>
+</body>
+</html>

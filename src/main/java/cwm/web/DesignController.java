@@ -25,20 +25,20 @@ import java.security.Principal;
 public class DesignController {
 
 
-    private final RecipeRepository cbRepo;
+    private final RecipeRepository repo;
 
     @Autowired
-    public DesignController(RecipeRepository cbRepo)
+    public DesignController(RecipeRepository repo)
     {
 
 
-        this.cbRepo=cbRepo;
+        this.repo=repo;
     }
 
     @GetMapping
     public String showDesignForm(Model model, @AuthenticationPrincipal User user) {
             addUserInfoToModel(model,user);
-            model.addAttribute("design", new Recipe());
+            model.addAttribute("recipe", new Recipe());
         return "design";
     }
     private void addUserInfoToModel(Model model, User user){
@@ -47,20 +47,20 @@ public class DesignController {
 
 
     @PostMapping
-    public String processDesign(@Valid @ModelAttribute("design") Recipe design, Errors errors){
+    public String processDesign(@Valid @ModelAttribute("recipe") Recipe recipe, Errors errors){
         if(errors.hasErrors())
             return "design";
 
 
-     cbRepo.save(design);
+     repo.save(recipe);
 
-        log.info("Processing..."+design);
-        return "redirect:/display";
+        log.info("Processing..."+recipe);
+        return "redirect:/content/display";
     }
 
 
 
-    @ModelAttribute(name="design")
+    @ModelAttribute(name="recipe")
     public Recipe addCBToModel(){
         return new Recipe();
     }

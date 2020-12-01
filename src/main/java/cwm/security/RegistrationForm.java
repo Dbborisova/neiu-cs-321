@@ -14,19 +14,19 @@ import javax.validation.constraints.Size;
 public class RegistrationForm {
 
     @NotNull
-    @Size(min=5, message = "Username must have at least 5 characters")
+    @Size(min=5, message = "Username must have at least 5 characters.")
     private String username;
 
     @NotNull
-    @Size(min=5, message = "Password must have at least 5 characters")
+    @Size(min=5, message = "Password must have at least 5 characters.")
     private String password;
 
     @NotNull
-    @NotEmpty(message = "Name is required")
+    @NotEmpty(message = " First and last name  is required.")
     private String fullName;
 
     @NotNull
-    @Pattern(regexp = "[0-9]{3}-[0-9]{3}-[0-9]{4}",message = "Phone number format:XXX-XXX-XXXX")
+    @Pattern(regexp = "[0-9]{3}-[0-9]{3}-[0-9]{4}",message = "Phone number format: XXX-XXX-XXXX.")
     private String phone;
 
     public User toUser(PasswordEncoder passwordEncoder){

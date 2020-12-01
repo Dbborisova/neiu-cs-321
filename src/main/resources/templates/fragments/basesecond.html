@@ -42,9 +42,9 @@
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
                 <a class="nav-link" th:href="@{/design}">Recipe</a>
             </li>
-            <li class="nav-item" th:classappend="${#request.getServletPath()== '/display' ? 'active' : ''}"
+            <li class="nav-item" th:classappend="${#request.getServletPath()== '/content/display' ? 'active' : ''}"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
-                <a class="nav-link" th:href="@{/display}">Content</a>
+                <a class="nav-link" th:href="@{/content/display}">Content</a>
             </li>
             <li class="nav-item"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
