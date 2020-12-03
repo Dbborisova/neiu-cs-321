@@ -5,37 +5,40 @@
 <head th:insert="fragments/basesecond :: head"></head>
 
 <body>
-<nav th:replace="fragments/basesecond :: navigation" ></nav>
+        <nav th:replace="fragments/basesecond :: navigation" ></nav>
 
-<div  class="container-fluid mt-5">
-    <div th:replace="fragments/base :: appImage"></div>
-</div>
-
-
-<div th:each="users : ${user}">
-    <div th:action="@{/settings}" th:object="${user}" >
-        <div class="row container-fluid mb-3">
-            <div class="container-fluid col-3">Name: <span type="password" th:text="${users.fullName}"></span></div>
+        <div  class="container-fluid  mt-5 py-4">
+            <div th:replace="fragments/base :: appImage"></div>
         </div>
-            <div class="row container-fluid mb-3">
-            <div class="container-fluid col-3">Username: <span th:text="${users.username}"></span></div>
-    </div>
-        <div class="row container-fluid mb-3">
-        <div class="container-fluid col-3 " >Password: <span th:text="${users.password}"></span></div>
-        </div>
-
-    <div class="row container-fluid">
-            <div class="container-fluid col-3" >Phone number: <span th:text="${users.phone}"></span></div>
-    </div>
-
-
-        <div class="container-fluid justify-content-center row mt-2">
-            <div class="col-3">
-                <p>
-                    <a th:href="@{/update/user}" class="btn btn-sm btn-outline-dark ">Update</a>
-
-                </p>
+        <div class="container-fluid mb-5 pb-5">
+        <div th:each="users : ${user}">
+        <div th:action="@{/settings}" th:object="${user}" >
+            <div class="row container-fluid justify-content-center mb-3 ">
+                <div class=" col-3 text-center my-3"><span class="font-weight-bold" >Name:</span> <span th:text="${users.fullName}"></span></div>
             </div>
+            <div class="row container-fluid ">
+                <div class="container-fluid text-center mb-4 col-3"><span class="font-weight-bold">Username:</span> <span th:text="${users.username}"></span></div>
+            </div>
+            <div class="row container-fluid ">
+               <div class="container-fluid text-center mb-3 col-3 " ><p><span class="font-weight-bold"> Password:</span> *******</p></div>
+            </div>
+            <div class="row container-fluid">
+               <div class="container-fluid text-center mb-3 col-3" ><span class="font-weight-bold">Phone number:</span> <span th:text="${users.phone}"></span></div>
+            </div>
+            <div class="row container-fluid justify-content-center mt-2">
+                <div class="text-center col-3">
+                    <p>
+                        <a th:href="@{/update/user}" class="btn btn-sm btn-outline-dark ">Update</a>
+                    </p>
+                </div>
+            </div>
+           </div>
+           </div>
         </div>
-    </div>
-</div>
+
+        <footer th:replace="fragments/base :: footer"></footer>
+
+        <div th:insert="fragments/base :: scripts"></div>
+
+</body>
+</html>

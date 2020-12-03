@@ -107,7 +107,6 @@ public class TableController {
     }
 
 
-
     private void addUserInfoToModel(Model model, User user){
         model.addAttribute("fullName",user.getFullName());
     }

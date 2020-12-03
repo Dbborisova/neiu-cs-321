@@ -13,36 +13,31 @@
         </div>
     </div>
 
-        <form method="post" th:action="@{/register}" th:object="${registrationForm}" class="container-fluid">
+    <form method="post" th:action="@{/register}" th:object="${registrationForm}" class="container-fluid">
         <div class=" row form-group justify-content-center mt-2">
-            <p class="font-weight-bold">Username
+            <p class="font-weight-bold">Username:
                 <input class="input-group-prepend form-control" type="text" th:name="username" th:value="*{username}" id="username"/>
-            <span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span></p></div>
-
-
-
+            <span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span></p>
+        </div>
         <div class="row form-group justify-content-center mt-2">
-            <p class="font-weight-bold">Password
+            <p class="font-weight-bold">Password:
                 <input class="form-control input-group-prepend" type="password" th:name="password" th:value="*{password}" id="password"/>
-                <span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span></p></div>
-
-
+                <span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span></p>
+        </div>
         <div class="row form-group justify-content-center mt-2">
-            <p class="font-weight-bold">Full Name
+            <p class="font-weight-bold">Full Name:
                 <input class="form-control input-group-text" type="text" th:name="fullName" th:value="*{fullName}" id="fullName"/>
-                <span class="validationError" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</span></p></div>
-
-
+                <span class="validationError" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</span></p>
+        </div>
         <div class="row form-group justify-content-center mt-2">
-            <p class="font-weight-bold">Phone Number
+            <p class="font-weight-bold">Phone Number:
                 <input class="form-control input-group-prepend" type="text" th:name="phone" th:value="*{phone}" id="phone"/>
-                <span class="validationError" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Number Error</span></p></div>
-
-
-            <div class="row-2 text-center">
+                <span class="validationError" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Number Error</span></p>
+        </div>
+        <div class="row-2 text-center">
               <input class="btn btn-outline-dark" type="submit" value="Register"/><br/>
-            </div>
-        </form>
+        </div>
+    </form>
 
     <footer th:replace="fragments/base :: footer"></footer>
 

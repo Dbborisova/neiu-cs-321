@@ -30,6 +30,10 @@
 
                 <a class="nav-link" th:href="@{/}">Home</a>
             </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath()== '/settings' ? 'active' : ''}"
+                th:if="${!#authentication.getName().equals('anonymousUser')}">
+                <a class="nav-link" th:href="@{/settings}">Settings</a>
+            </li>
             <li class="nav-item" th:classappend="${#request.getServletPath()== '/login' ? 'active' : ''}"
                 th:if="${#authentication.getName().equals('anonymousUser')}" >
                 <a class="nav-link" th:href="@{/login}">Login</a>
@@ -45,10 +49,6 @@
             <li class="nav-item" th:classappend="${#request.getServletPath()== '/content/display' ? 'active' : ''}"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
                 <a class="nav-link" th:href="@{/content/display}">Content</a>
-            </li>
-            <li class="nav-item" th:classappend="${#request.getServletPath()== '/settings' ? 'active' : ''}"
-                th:if="${!#authentication.getName().equals('anonymousUser')}">
-                <a class="nav-link" th:href="@{/settings}">Settings</a>
             </li>
             <li class="nav-item"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">

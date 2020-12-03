@@ -8,19 +8,11 @@ body {
   }
 
     img {
-        width: 15em;
-        height: 15em;
+        width: 20em;
+        height: 10em;
     }
 
 
-    .footerForm{
-        font-family: Arial;
-        position: fixed;
-        left:0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-    }
 
 
     span.validationError {
@@ -28,25 +20,32 @@ body {
     }
 
     #app{
-        background-color: lightsteelblue;
+        background-color: #BBBBBB;
+        border-radius: 40px;
     }
     #soup
     {
-        background-color: lightsteelblue;
+        background-color: #BBBBBB;
+        border-radius: 40px;
     }
     #bread
     {
-        background-color: lightsteelblue;
+        background-color: #BBBBBB;
+        border-radius: 40px;
+
     }
     #salad
     {
-        background-color: lightsteelblue;
+        background-color: #BBBBBB;
+        border-radius: 40px;
     }
     #maindish{
-        background-color: lightsteelblue;
+        background-color: #BBBBBB;
+        border-radius: 40px;
     }
     #dessert
     {
-        background-color:lightsteelblue;
+        background-color: #BBBBBB;
+        border-radius: 40px;
     }
 

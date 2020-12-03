@@ -30,6 +30,9 @@
 
                 <a class="nav-link" th:href="@{/}">Home</a>
             </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath()== '/settings' ? 'active' : ''}"
+                th:if="${!#authentication.getName().equals('anonymousUser')}">
+                <a class="nav-link" th:href="@{/settings}">Settings</a></li>
             <li class="nav-item" th:classappend="${#request.getServletPath()== '/login' ? 'active' : ''}"
                 th:if="${#authentication.getName().equals('anonymousUser')}" >
                 <a class="nav-link" th:href="@{/login}">Login</a>
@@ -46,9 +49,6 @@
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
                 <a class="nav-link" th:href="@{/content/display}">Content</a>
             </li>
-            <li class="nav-item" th:classappend="${#request.getServletPath()== '/settings' ? 'active' : ''}"
-                th:if="${!#authentication.getName().equals('anonymousUser')}">
-                <a class="nav-link" th:href="@{/settings}">Settings</a>
             <li class="nav-item"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
                 <a class="nav-link" th:href="@{/logout}">Logout</a>
@@ -58,12 +58,12 @@
 </nav>
 
 <div class="container-fluid mt-5">
-    <div th:fragment="appImage" class="row justify-content-center mt-2 mb-3">
-        <img th:src="@{/images/cookwithme.png}"/>
+    <div th:fragment="appImage" class="row justify-content-center mt-1 mb-4">
+        <img th:src="@{/images/cwml.jpg}"/>
     </div>
 </div>
 
-<footer th:fragment="footer" class="footer mt-lg-5">
+<footer th:fragment="footer" class="position-sticky pt-5">
     <div class="container text-center">
         <span>Copyright @2020 Desislava Borisova CS-321-1</span>
     </div>

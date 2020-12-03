@@ -5,20 +5,19 @@
 <head th:insert="fragments/base :: headContent"></head>
 
 <body>
-    <nav th:replace="fragments/base :: navigation" ></nav>
+        <nav th:replace="fragments/base :: navigation" ></nav>
 
-    <div  class="container-fluid mt-5">
-        <div th:replace="fragments/base :: appImage"></div>
-    </div>
-
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center">
-            <h2>Ooop! Something went wrong! We're working on it...</h2>
+        <div  class="container-fluid mt-5">
+            <div th:replace="fragments/base :: appImage"></div>
         </div>
-    </div>
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-center">
+                <h2 class="font-weight-light">Ooop! Something went wrong! We're working on it...</h2>
+            </div>
+        </div>
 
-    <footer th:replace="fragments/base :: footer"></footer>
+        <footer th:replace="fragments/base :: footer"></footer>
 
-    <div th:insert="fragments/base :: scripts"></div>
+        <div th:insert="fragments/base :: scripts"></div>
 </body>
 </html>

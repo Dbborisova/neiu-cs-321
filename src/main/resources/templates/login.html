@@ -5,7 +5,7 @@
 <head th:insert="fragments/base :: headContent"></head>
 
 <body>
-<nav th:replace="fragments/base :: navigation" ></nav>
+    <nav th:replace="fragments/base :: navigation" ></nav>
 
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -14,22 +14,19 @@
                 </div>
             </div>
         </div>
-        <form method="post" th:action="@{/login}" class="container-fluid">
-            <div class="row form-group justify-content-center">
+    <form method="post" th:action="@{/login}" class="container-fluid">
+            <div class="row form-group justify-content-center mt-5 pt-4">
                 <div class="justify-content-center mb-3">
                     <div th:if="${param.errors}">
                         Unable to login. Check your username and password.
                     </div>
                 </div>
-<!--                <label class="col-form-label col-1 text-right font-weight-bold" for="username">Username</label>-->
-                <p class="font-weight-bold">Username <input class="input-group-prepend form-control" type="text" th:name="username" id="username"></p>
+                <p class="font-weight-bold">Username: <input class="input-group-prepend form-control" type="text" th:name="username" id="username"></p>
             </div>
-            <div class="row from-group justify-content-center">
-<!--                <lable class="col-form-label col-1 text-right font-weight-bold" for="password">Password</lable>-->
-                <p class="font-weight-bold">Password<input class="input-group-prepend form-control" type="password" th:name="password" id="password"></p>
+            <div class="row from-group justify-content-center pb-4">
+                <p class="font-weight-bold">Password: <input class="input-group-prepend form-control" type="password" th:name="password" id="password"></p>
             </div>
-
-            <div class="row justify-content-center mt-3">
+            <div class="row justify-content-center mb-5 pb-5">
                 <input class="btn btn-outline-dark ml-3" type="submit" value="login">
             </div>
     </form>
