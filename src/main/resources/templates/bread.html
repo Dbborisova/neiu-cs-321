@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/basesecond :: head"></head>
+
+<body>
+    <nav th:replace="fragments/basesecond :: navigation" ></nav>
+
+    <div  class="container-fluid mt-5">
+         <div th:replace="fragments/base :: appImage"></div>
+    </div>
+
+    <div th:each="br : ${bread}">
+        <div th:action="@{/display}" th:object="${bread}" >
+            <div class="row mb-3 shadow-lg py-1" id="bread">
+                <div class="container-fluid col-2"> <span class="font-weight-bold" th:text="${br.categories}"></span>
+                    <p class="mt-2">Total Time: <span th:text="${br.time}"></span></p>
+                    <p>Calories: <span th:text="${br.cal}"></span></p></div>
+                <div class="container-fluid col-2 mr-2 py-1"> <p >Name </p><span th:text="${br.name}"></span></div>
+                <div class="container-fluid col-3 mr-1 py-1" > <p>Ingredients</p> <span th:text="${br.ingredients}"></span></div>
+                <div class="container-fluid col-4 py-1" > <p>Description </p><span th:text="${br.ds}"></span></div>
+
+            </div>
+            <div class="row mt-4 ">
+                <div class="col-12">
+                    <p>
+                     <a th:href="@{/modify/{recipeId}(recipeId=${br.id})}" class="btn btn-sm btn-outline-dark ">Update recipe</a>
+                    <a th:href="@{/modify/delete/{recipeId}(recipeId=${br.id})}" th:onclick="return ConfirmDelete()" class="btn btn-sm btn-outline-dark ">Delete recipe</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function ConfirmDelete() {
+            var x = confirm("Are you sure you want to delete the recipe?");
+            if (x==true){
+                return true;}
+            else {
+                return false;
+            }
+        }
+
+    </script>
+
+    <footer th:replace="fragments/base :: footer"></footer>
+
+    <div th:insert="fragments/base :: scripts"></div>
+
+</body>
+</html>

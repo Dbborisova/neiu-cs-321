@@ -1,0 +1,15 @@
+body{
+    font-family: ".SF NS Text";
+    background-color: darkgray;
+}
+img {
+    width: 20em;
+    height: 10em;
+}
+h1{
+    font-size: medium;
+}
+
+span.validationError {
+    color: #ff0000;
+}
