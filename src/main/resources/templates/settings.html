@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/basesecond :: head"></head>
+
+<body>
+<nav th:replace="fragments/basesecond :: navigation" ></nav>
+
+<div  class="container-fluid mt-5">
+    <div th:replace="fragments/base :: appImage"></div>
+</div>
+
+
+<div th:each="users : ${user}">
+    <div th:action="@{/settings}" th:object="${user}" >
+        <div class="row container-fluid mb-3">
+            <div class="container-fluid col-3">Name: <span type="password" th:text="${users.fullName}"></span></div>
+        </div>
+            <div class="row container-fluid mb-3">
+            <div class="container-fluid col-3">Username: <span th:text="${users.username}"></span></div>
+    </div>
+        <div class="row container-fluid mb-3">
+        <div class="container-fluid col-3 " >Password: <span th:text="${users.password}"></span></div>
+        </div>
+
+    <div class="row container-fluid">
+            <div class="container-fluid col-3" >Phone number: <span th:text="${users.phone}"></span></div>
+    </div>
+
+
+        <div class="container-fluid justify-content-center row mt-2">
+            <div class="col-3">
+                <p>
+                    <a th:href="@{/update/user}" class="btn btn-sm btn-outline-dark ">Update</a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

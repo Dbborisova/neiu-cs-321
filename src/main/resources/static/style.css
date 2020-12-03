@@ -3,11 +3,13 @@ body {
         background-color: darkgray;
     }
 
-
+  a{
+      color:black;
+  }
 
     img {
-        width: 20em;
-        height: auto;
+        width: 15em;
+        height: 15em;
     }
 
 

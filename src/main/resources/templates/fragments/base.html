@@ -42,10 +42,13 @@
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
                 <a class="nav-link" th:href="@{/design}">Recipe</a>
             </li>
-            <li class="nav-item" th:classappend="${#request.getServletPath()== '/display' ? 'active' : ''}"
+            <li class="nav-item" th:classappend="${#request.getServletPath()== '/content/display' ? 'active' : ''}"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
-                <a class="nav-link" th:href="@{/display}">Content</a>
+                <a class="nav-link" th:href="@{/content/display}">Content</a>
             </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath()== '/settings' ? 'active' : ''}"
+                th:if="${!#authentication.getName().equals('anonymousUser')}">
+                <a class="nav-link" th:href="@{/settings}">Settings</a>
             <li class="nav-item"
                 th:if="${!#authentication.getName().equals('anonymousUser')}">
                 <a class="nav-link" th:href="@{/logout}">Logout</a>
@@ -56,7 +59,7 @@
 
 <div class="container-fluid mt-5">
     <div th:fragment="appImage" class="row justify-content-center mt-2 mb-3">
-        <img th:src="@{/images/cwm.jpg}"/>
+        <img th:src="@{/images/cookwithme.png}"/>
     </div>
 </div>
 

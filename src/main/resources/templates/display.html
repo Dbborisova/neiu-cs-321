@@ -11,19 +11,20 @@
             <div  class="container-fluid mt-5">
                  <div th:replace="fragments/base :: appImage"></div>
             </div>
-            <div class="text-center mb-3">
-                <h3 class="text-center"><span th:text="${fullName}"></span> recipes</h3>
+
+            <div class="text-center my-4">
+                <h3 class="text-center font-weight-light"><span th:text="${fullName}" class="font-weight-light"></span> recipes</h3>
             </div>
 
         <div class="container-fluid">
-            <div class="list-group text-center">
+            <div class="list-group text-center my-4">
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/content/appetizer">Appetizer</a></li>
-                    <li class="mb-2"><a href="/content/soup">Soup</a></li>
-                    <li class="mb-2"><a href="/content/bread">Bread</a></li>
-                    <li class="mb-2"><a href="/content/salad">Salad</a></li>
-                    <li class="mb-2"><a href="/content/maindish">Main Dish</a></li>
-                    <li class="mb-2"><a href="/content/dessert">Dessert</a></li>
+                    <li class="btn btn-outline-dark btn-lg mb-2"><a href="/content/appetizer">Appetizer</a></li>
+                    <li class="btn btn-outline-dark btn-lg mb-2"><a href="/content/soup">Soup</a></li>
+                    <li class="btn btn-outline-dark btn-lg mb-2"><a href="/content/bread">Bread</a></li>
+                    <li class="btn btn-outline-dark btn-lg mb-2"><a href="/content/salad">Salad</a></li>
+                    <li class="btn btn-outline-dark btn-lg mb-2"><a href="/content/maindish">Main Dish</a></li>
+                    <li class="btn btn-outline-dark btn-lg mb-2"><a href="/content/dessert">Dessert</a></li>
                 </ul>
             </div>
         </div>

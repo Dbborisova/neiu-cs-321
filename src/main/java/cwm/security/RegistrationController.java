@@ -1,5 +1,6 @@
 package cwm.security;
 
+import cwm.User;
 import cwm.data.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,6 @@ public class RegistrationController {
         }
         return "redirect:/login";
     }
+
 
 }

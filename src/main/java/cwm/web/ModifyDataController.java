@@ -1,6 +1,7 @@
 package cwm.web;
 
 import cwm.Recipe;
+import cwm.User;
 import cwm.data.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

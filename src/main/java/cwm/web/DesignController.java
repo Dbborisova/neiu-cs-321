@@ -1,12 +1,10 @@
 package cwm.web;
 
-//import cwm.AForm;
-//import cwm.Category;
+
 import cwm.Recipe;
 import cwm.User;
 import cwm.data.RecipeRepository;
-//import cwm.data.CategoryRepository;
-import cwm.data.UserRepository;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,7 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
+
 
 @Slf4j
 @Controller
@@ -30,8 +28,6 @@ public class DesignController {
     @Autowired
     public DesignController(RecipeRepository repo)
     {
-
-
         this.repo=repo;
     }
 
@@ -50,18 +46,14 @@ public class DesignController {
     public String processDesign(@Valid @ModelAttribute("recipe") Recipe recipe, Errors errors){
         if(errors.hasErrors())
             return "design";
-
-
      repo.save(recipe);
-
-        log.info("Processing..."+recipe);
+     log.info("Processing..."+recipe);
         return "redirect:/content/display";
     }
 
-
-
     @ModelAttribute(name="recipe")
-    public Recipe addCBToModel(){
+    public Recipe addCBToModel()
+    {
         return new Recipe();
     }
 

@@ -1,5 +1,6 @@
 package cwm;
 
+import cwm.security.RegistrationForm;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor(access=AccessLevel.PROTECTED,force = true)
 @RequiredArgsConstructor
-public class User implements UserDetails {
+public class User extends RegistrationForm implements UserDetails {
 
     private static final long serialVersionVID=1L;
 
@@ -59,4 +60,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
