@@ -34,3 +34,4 @@ build/
 
 
 dbdata.mv.db
+.DS_Store
