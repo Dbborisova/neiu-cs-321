@@ -6,20 +6,23 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
 
-  h2:
-    console:
-      enabled: true
+
 
   datasource:
-      url: jdbc:h2:file:~/Desktop/neiu-cs-321/cook-with-me-master/dbdata
-      username: admin
-      password:
-      driver: org.h2.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${CLEARDB_DATABASE_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    initialization-mode:  always
+    platform: mysql
 
   server:
-    port: 8080
+    port: ${PORT}
     error:
       path: /error
       whitelable:
