@@ -25,9 +25,18 @@ public class SettingsController {
     @GetMapping("/settings")
     public String displayUserInfo(Model model, @AuthenticationPrincipal User user){
         List<User> users= (List<User>) userRepo.findAll();
+        addUserToModel(model,user);
         model.addAttribute("user",users);
         return "settings";
 
+    }
+
+    private void addUserToModel(Model model, User user){
+        model.addAttribute("id",user.getId());
+        model.addAttribute("name",user.getFullName());
+        model.addAttribute("username",user.getUsername());
+        model.addAttribute("phone",user.getPhone());
+        model.addAttribute("password",user.getPassword());
     }
 
 }

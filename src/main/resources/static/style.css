@@ -2,18 +2,18 @@ body {
         font-family: ".SF NS Text";
         background-color: darkgray;
     }
+#textStyle{
+    text-decoration:underline ;
+}
 
   a{
       color:black;
-  }
+   }
 
     img {
         width: 20em;
         height: 10em;
     }
-
-
-
 
     span.validationError {
         color: #ff0000;

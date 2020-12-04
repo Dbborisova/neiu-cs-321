@@ -11,19 +11,18 @@
             <div th:replace="fragments/base :: appImage"></div>
         </div>
         <div class="container-fluid mb-5 pb-5">
-        <div th:each="users : ${user}">
-        <div th:action="@{/settings}" th:object="${user}" >
+        <div th:action="@{/settings}" th:object="${user}"  >
             <div class="row container-fluid justify-content-center mb-3 ">
-                <div class=" col-3 text-center my-3"><span class="font-weight-bold" >Name:</span> <span th:text="${users.fullName}"></span></div>
+                <div class=" col-3 text-center my-3"><span class="font-weight-bold" >Name:</span> <span th:text="${name}"></span></div>
             </div>
             <div class="row container-fluid ">
-                <div class="container-fluid text-center mb-4 col-3"><span class="font-weight-bold">Username:</span> <span th:text="${users.username}"></span></div>
+                <div class="container-fluid text-center mb-4 col-3"><span class="font-weight-bold">Username:</span> <span th:text="${username}"></span></div>
             </div>
             <div class="row container-fluid ">
                <div class="container-fluid text-center mb-3 col-3 " ><p><span class="font-weight-bold"> Password:</span> *******</p></div>
             </div>
             <div class="row container-fluid">
-               <div class="container-fluid text-center mb-3 col-3" ><span class="font-weight-bold">Phone number:</span> <span th:text="${users.phone}"></span></div>
+               <div class="container-fluid text-center mb-3 col-3" ><span class="font-weight-bold">Phone number:</span> <span th:text="${phone}"></span></div>
             </div>
             <div class="row container-fluid justify-content-center mt-2">
                 <div class="text-center col-3">
@@ -32,7 +31,6 @@
                     </p>
                 </div>
             </div>
-           </div>
            </div>
         </div>
 
